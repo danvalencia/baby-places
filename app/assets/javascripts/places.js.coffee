@@ -34,10 +34,17 @@ class Map
       animation: google.maps.Animation.DROP
       position: coordinates
 
-    google.maps.event.addListener(marker, 'click', @.onMarkerDrop)
+    @.updateCoordinateFormFields coordinates
 
-  onMarkerDrop: ->
-    console.log "On Drop"
+    google.maps.event.addListener(marker, 'dragend', @.onMarkerDrop)
+
+  onMarkerDrop: (mouseEvent) =>
+    console.log "Marker position is now (#{mouseEvent.latLng.lat()},#{mouseEvent.latLng.lng()})"
+    @.updateCoordinateFormFields {lat: mouseEvent.latLng.lat(), lng: mouseEvent.latLng.lng()}
+
+  updateCoordinateFormFields:(coordinates) ->
+    $("#place_latitude").val(coordinates.lat)
+    $("#place_longitude").val(coordinates.lng)
 
 
 window.Map = new Map
