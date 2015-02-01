@@ -6,13 +6,7 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
   def index
-    # @places = Place.all
-    10_000_000.times do |i|
-      sleep 1
-      response.stream.write "<h1>This is line #{i}</h1>"
-    end
-  ensure
-    response.stream.close
+    @places = Place.all
   end
 
   # GET /places/1
