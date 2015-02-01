@@ -4,6 +4,8 @@
   <title>BabyPlaces</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{BabyPlaces::Application.config.maps_api_key}" %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -36,6 +38,6 @@
 
   </div><!-- /.container -->
 
-
+  <%= yield :footer_scripts %>
 </body>
 </html>
