@@ -61,7 +61,16 @@ class Map
       @markers.push marker
       bounds.extend(place.geometry.location)
 
+    if places.length == 1
+      @.selectPlace places[0]
+
     @map.fitBounds bounds
+
+  selectPlace: (place) =>
+    $("#place_name").val(place.name)
+    $("#place_address").val(place.formatted_address)
+    $("#place_latitude").val(place.geometry.location.lat())
+    $("#place_longitude").val(place.geometry.location.lng())
 
   setMarkerOnCoordinates:(coordinates) =>
     marker = new google.maps.Marker
