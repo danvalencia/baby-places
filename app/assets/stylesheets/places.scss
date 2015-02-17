@@ -4,6 +4,7 @@
 
 $mapWidth : 100%;
 $mapHeight : 400px;
+$mainContainerPadding: 20px;
 
 #map-canvas {
   width: $mapWidth; 
@@ -24,4 +25,9 @@ $mapHeight : 400px;
   margin-left: -1px;
   padding-left: 14px;  /* Regular padding-left + 1. */
   width: 401px;
+}
+
+.container {
+  padding-left: $mainContainerPadding;
+  padding-right: $mainContainerPadding;
 }
