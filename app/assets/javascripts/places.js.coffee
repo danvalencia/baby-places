@@ -7,13 +7,10 @@ class Map
   constructor:(@element = "map-canvas") ->
 
   initializeMap:(center) ->
-    console.log "Inside initializeMap!"
-    
     if center
-      showMapInCenter(center)
-    else 
-      if navigator.geolocation
-        navigator.geolocation.getCurrentPosition(@.onLocationRetrieved)
+      showMapInCoordinates(center)
+    else if navigator.geolocation
+      navigator.geolocation.getCurrentPosition(@.onLocationRetrieved)
 
   onLocationRetrieved:(position) =>
     currentLocation = {lat: position.coords.latitude, lng: position.coords.longitude}
@@ -33,9 +30,7 @@ class Map
       draggable: true
       animation: google.maps.Animation.DROP
       position: coordinates
-
     @.updateCoordinateFormFields coordinates
-
     google.maps.event.addListener(marker, 'dragend', @.onMarkerDrop)
 
   onMarkerDrop: (mouseEvent) =>
