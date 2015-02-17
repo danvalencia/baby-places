@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @place.latitude %>,<%= @place.longitude %>&zoom=15&size=400x400&markers=color:green%7C<%= @place.latitude %>,<%= @place.longitude %>">
 <p>
   <strong>Name:</strong>
   <%= @place.name %>

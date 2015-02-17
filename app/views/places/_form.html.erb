@@ -11,32 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="field form-group">
+    <%= f.label :name %>*<br>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :amenities %><br>
-    <%= f.text_area :amenities %>
+  <div class="field form-group">
+    <%= f.label :amenities %>*<br>
+    <%= f.text_area :amenities, class: "form-control"%>
   </div>
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
+  <div class="field form-group">
+    <%= f.label :latitude %>*<br>
+    <%= f.text_field :latitude, class: "form-control"%>
   </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
+  <div class="field form-group">
+    <%= f.label :longitude %>*<br>
+    <%= f.text_field :longitude, class: "form-control"%>
   </div>
   <br/>
   <div id="map-canvas" class="field">
     
   </div>
   <br/>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :address %><br>
-    <%= f.text_area :address %>
+    <%= f.text_area :address, class: "form-control"%>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions form-group">
+    <%= f.submit class: "btn btn-lg btn-success"%>
   </div>
 <% end %>
