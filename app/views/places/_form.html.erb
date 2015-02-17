@@ -1,43 +1,13 @@
-<%= form_for(@place) do |f| %>
-  <% if @place.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
-
-      <ul>
-      <% @place.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= simple_form_for(@place, html: { class: 'form-horizontal' }) do |f| %>
   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
   <div id="map-canvas" class="field">
     
   </div>
-  <br/>
-  <div class="field form-group">
-    <%= f.label :name %>*<br>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :amenities %>*<br>
-    <%= f.text_area :amenities, class: "form-control"%>
-  </div>
-  <div class="field form-group">
-    <%= f.label :latitude %>*<br>
-    <%= f.text_field :latitude, class: "form-control"%>
-  </div>
-  <div class="field form-group">
-    <%= f.label :longitude %>*<br>
-    <%= f.text_field :longitude, class: "form-control"%>
-  </div>
-  <br/>
-  <div class="field form-group">
-    <%= f.label :address %><br>
-    <%= f.text_area :address, class: "form-control"%>
-  </div>
-  <div class="actions form-group">
-    <%= f.submit class: "btn btn-lg btn-success"%>
-  </div>
+  <%= f.input :name%>
+  <%= f.association :amenities, as: :check_boxes %>
+  <%= f.input :latitude %>
+  <%= f.input :longitude %>
+  <%= f.input :address, as: :text%>
+
+  <%= f.button :submit, class: "btn btn-lg btn-success"%>
 <% end %>

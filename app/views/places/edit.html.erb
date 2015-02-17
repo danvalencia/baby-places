@@ -4,3 +4,7 @@
 
 <%= link_to 'Show', @place %> |
 <%= link_to 'Back', places_path %>
+
+<script type="text/javascript">
+  window.Map.initializeMap({lat: <%=@place.latitude%>, lng: <%=@place.longitude%> });
+</script>

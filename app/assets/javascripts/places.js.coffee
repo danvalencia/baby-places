@@ -10,7 +10,7 @@ class Map
 
   initializeMap:(center) ->
     if center
-      showMapInCoordinates(center)
+      @.showMapInCoordinates(center)
     else if navigator.geolocation
       navigator.geolocation.getCurrentPosition(@.onLocationRetrieved)
 

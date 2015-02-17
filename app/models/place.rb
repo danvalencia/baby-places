@@ -1,3 +1,4 @@
 class Place < ActiveRecord::Base
-  validates :name, :amenities, :latitude, :longitude, presence: true
+  has_and_belongs_to_many :amenities
+  validates :name, :latitude, :longitude, :address, presence: true
 end

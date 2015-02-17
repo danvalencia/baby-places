@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126161317) do
+ActiveRecord::Schema.define(version: 20150217043254) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "amenities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "amenities_places", id: false, force: :cascade do |t|
+    t.integer "place_id"
+    t.integer "amenity_id"
+  end
+
+  add_index "amenities_places", ["amenity_id"], name: "index_amenities_places_on_amenity_id", using: :btree
+  add_index "amenities_places", ["place_id"], name: "index_amenities_places_on_place_id", using: :btree
 
   create_table "places", force: :cascade do |t|
     t.string   "name"
