@@ -5,6 +5,8 @@
 class Map
 
   constructor:(@element = "map-canvas") ->
+    @markers = []
+    @zoomLevel = 16
 
   initializeMap:(center) ->
     if center
@@ -14,15 +16,52 @@ class Map
 
   onLocationRetrieved:(position) =>
     currentLocation = {lat: position.coords.latitude, lng: position.coords.longitude}
-    console.log "Center is: #{currentLocation}"
     @.showMapInCoordinates(currentLocation)
 
   showMapInCoordinates:(coordinates) ->
     mapOptions = 
       center: coordinates
-      zoom: 16
-    @map = new google.maps.Map(document.getElementById(@element),mapOptions);
+      zoom: @zoomLevel
+    @map = new google.maps.Map(document.getElementById(@element),mapOptions)
+    @.setupSearchField()
     @.setMarkerOnCoordinates(coordinates)
+
+  setupSearchField: ->
+    input = document.getElementById 'pac-input'
+    @map.controls[google.maps.ControlPosition.TOP_LEFT].push input 
+    @searchBox = new google.maps.places.SearchBox(input)
+    google.maps.event.addListener(@searchBox, 'places_changed', @.onPlaceSelection)
+
+  onPlaceSelection: =>
+    @map.initialZoom = true
+
+    google.maps.event.addListener @map, 'zoom_changed', () =>
+      google.maps.event.addListenerOnce @map, 'bounds_changed', (event) =>
+        if @map.getZoom() > @zoomLevel and @map.initialZoom == true
+          @map.setZoom(@zoomLevel)
+          @map.initialZoom = false
+
+    console.log "Place selected! #{@searchBox}"
+    places = @searchBox.getPlaces()
+    return if places.length == 0
+
+    for marker in @markers
+      marker.setMap(null)
+
+    @markers = []
+
+    bounds = new google.maps.LatLngBounds()
+
+    for place in places
+      marker = new google.maps.Marker
+        map: @map
+        title: place.name
+        position: place.geometry.location
+
+      @markers.push marker
+      bounds.extend(place.geometry.location)
+
+    @map.fitBounds bounds
 
   setMarkerOnCoordinates:(coordinates) =>
     marker = new google.maps.Marker
@@ -30,6 +69,9 @@ class Map
       draggable: true
       animation: google.maps.Animation.DROP
       position: coordinates
+
+    @markers.push marker
+
     @.updateCoordinateFormFields coordinates
     google.maps.event.addListener(marker, 'dragend', @.onMarkerDrop)
 

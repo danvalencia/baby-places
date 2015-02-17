@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+  <div id="map-canvas" class="field">
+    
+  </div>
+  <br/>
   <div class="field form-group">
     <%= f.label :name %>*<br>
     <%= f.text_field :name, class: "form-control" %>
@@ -26,10 +31,6 @@
   <div class="field form-group">
     <%= f.label :longitude %>*<br>
     <%= f.text_field :longitude, class: "form-control"%>
-  </div>
-  <br/>
-  <div id="map-canvas" class="field">
-    
   </div>
   <br/>
   <div class="field form-group">
