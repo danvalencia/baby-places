@@ -30,9 +30,9 @@ class Map
     input = document.getElementById 'pac-input'
     @map.controls[google.maps.ControlPosition.TOP_LEFT].push input 
     @searchBox = new google.maps.places.SearchBox(input)
-    google.maps.event.addListener(@searchBox, 'places_changed', @.onPlaceSelection)
+    google.maps.event.addListener(@searchBox, 'places_changed', @.onSearchResultSelection)
 
-  onPlaceSelection: =>
+  onSearchResultSelection: =>
     @map.initialZoom = true
 
     google.maps.event.addListener @map, 'zoom_changed', () =>
@@ -57,6 +57,15 @@ class Map
         map: @map
         title: place.name
         position: place.geometry.location
+
+      thisMap = @
+      google.maps.event.addListener marker, 'click', do (place, thisMap)->
+        -> 
+          thisMap.selectPlace place
+          thisMap.map.setCenter 
+            lat: place.geometry.location.lat()
+            lng: place.geometry.location.lng()
+          thisMap.map.setZoom thisMap.zoomLevel
 
       @markers.push marker
       bounds.extend(place.geometry.location)
