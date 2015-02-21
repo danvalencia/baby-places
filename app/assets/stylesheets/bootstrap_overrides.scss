@@ -3,6 +3,9 @@ $bgHighlight    : #4a8a00;
 $colDefault     : #ecf0f1;
 $colHighlight   : #c5fb95;
 $dropDown       : false;
+
+/* Navbar Overrides */
+
 .navbar-default {
   background-color: $bgDefault;
   border-color: $bgHighlight;
@@ -60,4 +63,11 @@ $dropDown       : false;
       > a, > a:hover, > a:focus, {
         color: $colHighlight;
         background-color: $bgHighlight; }}}
+}
+
+/* Other bootstrap overrides */
+
+.row {
+  padding-left: 40px;
+  padding-right: 40px;
 }
