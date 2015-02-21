@@ -22,6 +22,7 @@ class Map
     mapOptions = 
       center: coordinates
       zoom: @zoomLevel
+      disableDefaultUI: true
     @map = new google.maps.Map(document.getElementById(@element),mapOptions)
     @.setupSearchField()
     @.setMarkerOnCoordinates(coordinates)

@@ -1,10 +1,12 @@
-<h1><%= @place.name %></h1>
+<div class="col-lg-12">
+  <h1><%= @place.name %></h1>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%= link_to 'Show', @place %> |
-<%= link_to 'Back', places_path %>
+  <%= link_to 'Show', @place %> |
+  <%= link_to 'Back', places_path %>
 
-<script type="text/javascript">
-  window.Map.initializeMap({lat: <%=@place.latitude%>, lng: <%=@place.longitude%> });
-</script>
+  <script type="text/javascript">
+    window.Map.initializeMap({lat: <%=@place.latitude%>, lng: <%=@place.longitude%> });
+  </script> 
+</div>

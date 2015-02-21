@@ -14,7 +14,7 @@ $mainContainerPadding: 5px;
 #pac-input {
   background-color: #fff;
   padding: 0 11px 0 13px;
-  width: 400px;
+  width: 250px;
   font-size: 15px;
   font-weight: 300;
   text-overflow: ellipsis;
@@ -30,4 +30,9 @@ $mainContainerPadding: 5px;
 .container {
   padding-left: $mainContainerPadding;
   padding-right: $mainContainerPadding;
+}
+
+.form-container {
+  padding-left: 40px;
+  padding-right: 40px;
 }
