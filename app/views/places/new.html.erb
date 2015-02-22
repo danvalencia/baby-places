@@ -1,11 +1,11 @@
 <div class="col-lg-12">
-  <h1 style="display: inline">Add New Place</h1>
+  <h1>Add New Place</h1>
 
-  <span><%= link_to 'Back', places_path %></span>
   <%= render 'form' %>
 
   <br/>
 
+  <span style="padding-left:15px"><%= link_to 'Back', places_path %></span>
 
   <script type="text/javascript">
     window.Map.initializeMap();
