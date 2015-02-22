@@ -6,7 +6,7 @@
     <% @places.each do |place| %>
       <div class="row">
         <div class="col-md-6">
-          <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= place.latitude %>,<%= place.longitude %>&zoom=15&size=400x100&markers=color:green%7C<%= place.latitude %>,<%= place.longitude %>">
+          <img class="map-img" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= place.latitude %>,<%= place.longitude %>&zoom=15&size=400x100&markers=color:green%7C<%= place.latitude %>,<%= place.longitude %>">
         </div>
         <div class="col-md-4">
            <h4><%= place.name %></h4>

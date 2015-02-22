@@ -6,9 +6,19 @@ $mapWidth : 100%;
 $mapHeight : 400px;
 $mainContainerPadding: 5px;
 
+body{
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
 #map-canvas {
   width: $mapWidth; 
   height: $mapHeight;
+}
+
+.map-img {
+  width: 100%;
 }
 
 #pac-input {

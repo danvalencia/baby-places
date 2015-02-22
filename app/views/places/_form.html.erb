@@ -6,8 +6,8 @@
     </div>
     <%= f.input :name%>
     <%= f.association :amenities, as: :check_boxes %>
-    <%= f.input :latitude %>
-    <%= f.input :longitude %>
+    <%= f.input :latitude, as: :hidden %>
+    <%= f.input :longitude, as: :hidden %>
     <%= f.input :address, as: :text%>
 
     <%= f.button :submit, class: "btn btn-lg btn-primary"%>
