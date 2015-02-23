@@ -1,9 +1,9 @@
 <div class="col-lg-12">
   <h1 style="display: inline"><%= @place.name %></h1>
-  <%= link_to 'Open in Google Maps', map_url_for(@place) %>
+  <%= link_to 'Get Directions', map_url_for(@place) %>
 
   <br/>
-  <img class="map-img" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @place.latitude %>,<%= @place.longitude %>&zoom=15&size=400x400&markers=color:green%7C<%= @place.latitude %>,<%= @place.longitude %>">
+  <img class="map-img" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @place.latitude %>,<%= @place.longitude %>&zoom=16&size=800x200&markers=color:green%7C<%= @place.latitude %>,<%= @place.longitude %>">
 
   <div>
     <strong>Amenities:</strong>
@@ -19,16 +19,6 @@
   <div>
     <strong>Address:</strong>
     <%= @place.address %>
-  </div>
-
-  <div>
-    <strong>Latitude:</strong>
-    <%= @place.latitude %>
-  </div>
-
-  <div>
-    <strong>Longitude:</strong>
-    <%= @place.longitude %>
   </div>
 
   <%= link_to 'Edit', edit_place_path(@place) %> |
