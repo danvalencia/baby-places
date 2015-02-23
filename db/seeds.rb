@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Amenity.create(name: "Playground")
+Amenity.create(name: "Changing Table")
+Amenity.create(name: "Nursing Area")
+Amenity.create(name: "Store")
+Amenity.create(name: "Baby Classes")
+Amenity.create(name: "Hospital")
+Amenity.create(name: "School")

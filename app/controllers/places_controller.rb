@@ -63,6 +63,19 @@ class PlacesController < ApplicationController
     end
   end
 
+  # GET /places/search?lat=31.12923&long=64.34234234&q=amenities:1,2,3
+  def search
+    @places = Place.all
+
+    respond_to do |format|
+      format.html { render 'search_results'}
+    end
+  end
+
+  def landing_page
+    @amenities = Amenity.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_place
